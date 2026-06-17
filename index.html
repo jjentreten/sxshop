@@ -1703,18 +1703,7 @@ const SUGESTOES = [
   'Alguns presentes falam por si. Esse foi escolhido com carinho, atenção e muita vontade de te ver feliz. 💋',
   'Surpresa! Porque te mimar é meu esporte favorito. Aproveite e pense em mim. Com amor e muito desejo. 💕🔒',
 ];
-function usarSugestao(i){ const ta=document.getElementById('inputDedica'); ta.value=SUGESTOES[i]; atualizarCartao(); ta.focus(); }
-function atualizarCartao(){
-  const txt=document.getElementById('inputDedica').value.trim();
-  const dest=document.getElementById('inputDest').value.trim();
-  const alvo=document.getElementById('cartaoTexto');
-  document.getElementById('dedicaCount').textContent=document.getElementById('inputDedica').value.length;
-  if(txt){ alvo.textContent=txt; alvo.classList.remove('vazio'); }
-  else { alvo.textContent='Sua mensagem aparecerá aqui, escrita à mão...'; alvo.classList.add('vazio'); }
-  document.getElementById('cartaoAssina').textContent = dest ? '— para '+dest : '— com carinho';
-}
-document.getElementById('inputDedica').addEventListener('input', atualizarCartao);
-document.getElementById('inputDest').addEventListener('input', ()=>{atualizarCartao();validarEntregaAoVivo();});
+document.getElementById('inputDest').addEventListener('input', ()=>{validarEntregaAoVivo();});
 
 /* ===================== IR PARA PAGAMENTO ===================== */
 function irPagamento(){
@@ -1838,7 +1827,7 @@ function montarItens(){
 }
 function montarMetadata(){
   const dest=document.getElementById('inputDest').value.trim();
-  const dedica=document.getElementById('inputDedica').value.trim();
+  const dedica='';
   const tel=document.getElementById('inputTel').value.trim();
   const brindes = estado.bumps.map(id=>{const a=adicionalDe(id);return a?a.nome:'';}).filter(Boolean);
   brindes.push('🍷 Mini vinho pra brindar a dois (brinde da oferta "pague em 10 min")');
@@ -1972,7 +1961,7 @@ function recomecar(){
   mapaGeo={lat:null,lon:null};
   const bc=document.getElementById('btnCupom'); if(bc){bc.disabled=false;bc.textContent='Aplicar';}
   document.getElementById('cupomMsg').textContent='';
-  selAgenda('hoje'); atualizarCartao();
+  selAgenda('hoje');
   document.getElementById('pixIntro').style.display='block';
   document.getElementById('pixPronto').style.display='none';
   document.getElementById('pixLoading').style.display='none';
