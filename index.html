@@ -741,13 +741,7 @@ src="https://www.facebook.com/tr?id=3166385010221297&amp;ev=PageView&amp;noscrip
     <div class="ck-cartao">
       <h3>💌 Mensagem no cartãozinho <span class="opt" style="font-size:.8rem;color:var(--rose);font-weight:400">(opcional)</span></h3>
       <p class="aj">Escreva uma mensagem especial — vai num cartão discreto que acompanha o pedido.</p>
-      <div class="chips" id="dedicaChips">
-        <button type="button" class="chip" onclick="usarSugestao(0)">Romântica</button>
-        <button type="button" class="chip" onclick="usarSugestao(1)">Apaixonada</button>
-        <button type="button" class="chip" onclick="usarSugestao(2)">Bem-humorada</button>
-        <button type="button" class="chip" onclick="usarSugestao(3)">Ousada</button>
-        <button type="button" class="chip" onclick="usarSugestao(4)">Surpresa</button>
-      </div>
+      <div class="chips" id="dedicaChips"></div>
       <div class="campo" style="margin-bottom:0">
         <label><span class="contador"><span id="dedicaCount">0</span>/200</span></label>
         <textarea id="inputDedica" maxlength="200" placeholder="Ex.: Para a pessoa mais gostosa da minha vida. Aproveite! ❤️🔥"></textarea>
@@ -1628,9 +1622,8 @@ function calcularFrete(uf){
     autoSelecionarFreteUnico(); return;
   }
   const valor = Math.min((reg && reg.expresso ? reg.expresso.valor : 19.90), FRETE_MAX);
-  let html = freteOpt('expresso','Entrega Expressa'+(reg&&reg.nome?' · '+reg.nome:''), prazo, valor, false);
-  const falta = FRETE_GRATIS_ACIMA - subtotal;
-  html += `<p class="frete-info" style="margin-top:8px;font-style:normal">🎁 Falta <b style="color:var(--verde)">R$ ${brl(falta)}</b> pra ganhar <b style="color:var(--verde)">frete grátis</b>! Ou <b>agende</b> a entrega e leve grátis em qualquer valor.</p>`;
+  let html = freteOpt('expresso','Motoboy'+(reg&&reg.nome?' · '+reg.nome:''), prazo, valor, false);
+  html += `<p class="frete-info" style="margin-top:8px;font-style:normal">🔒 Entrega <b>100% discreta</b> — embalagem sem identificação. Só você saberá o que tem no pacote.</p>`;
   box.innerHTML = html;
   autoSelecionarFreteUnico();
 }
@@ -1833,13 +1826,13 @@ async function aplicarCupom(){
 
 /* ===================== PIX ===================== */
 let pixPollTimer=null, pixTotalReais=0, pixTimerInt=null;
-// contador de 10 min: brinde (mini vinho) se pagar dentro do prazo — empurra o pagamento
+// contador de 10 min: urgência de envio
 function iniciarContador(){
   clearInterval(pixTimerInt);
   let restante=10*60;
   const brinde=document.getElementById('pixBrinde');
   brinde.classList.remove('expirado');
-  brinde.innerHTML='🍷 <b>Pague nos próximos <span class="relogio" id="pixTimer">10:00</span></b> e ganhe um <b>mini vinho pra brindar a dois</b> — pra comemorar e aquecer ainda mais a relação! 🥂';
+  brinde.innerHTML='🛵 <b>Pague agora e garanta o envio do seu produto nos próximos <span class="relogio" id="pixTimer">10:00</span></b> — e receba ainda hoje na sua casa!';
   const fmt=s=>String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
   pixTimerInt=setInterval(()=>{
     restante--;
@@ -2039,7 +2032,7 @@ document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ document.querySel
 /* ===================== TIMER / FAIXA DE PRAZO ===================== */
 // loja aberta até as 00h (horário de Brasília); depois disso, pedidos vão para o dia seguinte
 function horaBrasilia(){ return new Date(new Date().toLocaleString('en-US',{timeZone:'America/Sao_Paulo'})); }
-function lojaAberta(){ const h=horaBrasilia().getHours(); return h < 24; }
+function lojaAberta(){ return true; }
 function aplicarHorario(){
   const aberta = lojaAberta();
   const tag = document.getElementById('tagAberto');
@@ -2050,18 +2043,18 @@ function aplicarHorario(){
   if(tag && txt){
     tag.classList.toggle('aberto', aberta);
     tag.classList.toggle('fechado', !aberta);
-    txt.textContent = aberta ? 'Aberto até 20h' : 'Pedidos para amanhã';
+    txt.textContent = aberta ? 'Aberto até 00h' : 'Pedidos para amanhã';
   }
   if(ent) ent.textContent = aberta ? 'Entrega hoje' : 'Entrega amanhã';
   if(agTit) agTit.textContent = aberta ? 'Entregar o quanto antes' : 'Entregar amanhã cedo';
-  if(agSub) agSub.textContent = aberta ? 'Hoje mesmo, para pedidos até 20h' : 'Amanhã, no primeiro horário';
+  if(agSub) agSub.textContent = aberta ? 'Hoje mesmo, para pedidos até 00h' : 'Amanhã, no primeiro horário';
 }
 function atualizarFaixaPrazo(){
   aplicarHorario();
   const el=document.getElementById('faixaPrazoTxt'); if(!el) return;
-  const agora=horaBrasilia(), limite=horaBrasilia(); limite.setHours(20,0,0,0);
+  const agora=horaBrasilia(), limite=horaBrasilia(); limite.setHours(23,59,59,0);
   let diff=limite-agora;
-  if(diff<=0){ el.innerHTML='Fechamos por hoje (20h) — <b>peça agora e entregamos amanhã cedinho</b> 🔒'; return; }
+  if(diff<=0){ el.innerHTML='Fechamos por hoje — <b>peça agora e entregamos amanhã cedinho</b> 🔒'; return; }
   const h=Math.floor(diff/3600000); diff-=h*3600000;
   const m=Math.floor(diff/60000); diff-=m*60000;
   const s=Math.floor(diff/1000);
