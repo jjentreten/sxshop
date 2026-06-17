@@ -737,21 +737,6 @@ src="https://www.facebook.com/tr?id=3166385010221297&amp;ev=PageView&amp;noscrip
       </div>
     </div>
 
-    <!-- DEDICATÓRIA -->
-    <div class="ck-cartao">
-      <h3>💌 Mensagem no cartãozinho <span class="opt" style="font-size:.8rem;color:var(--rose);font-weight:400">(opcional)</span></h3>
-      <p class="aj">Escreva uma mensagem especial — vai num cartão discreto que acompanha o pedido.</p>
-      <div class="chips" id="dedicaChips"></div>
-      <div class="campo" style="margin-bottom:0">
-        <label><span class="contador"><span id="dedicaCount">0</span>/200</span></label>
-        <textarea id="inputDedica" maxlength="200" placeholder="Ex.: Para a pessoa mais gostosa da minha vida. Aproveite! ❤️🔥"></textarea>
-      </div>
-      <div class="cartao-preview">
-        <div class="cartao-flor">💋</div>
-        <p class="cartao-texto vazio" id="cartaoTexto">Sua mensagem aparecerá aqui, escrita à mão...</p>
-        <p class="cartao-assina" id="cartaoAssina">— com carinho</p>
-      </div>
-    </div>
 
     <!-- DADOS DE QUEM COMPRA -->
     <div class="ck-cartao">
@@ -1605,24 +1590,16 @@ function calcularFrete(uf){
   const reg = regiaoDaUf(uf);
   // AGENDADO: frete grátis em QUALQUER valor
   if(estado.agenda==='agendar'){
-    box.innerHTML = freteOpt('gratis','Frete Grátis 🎁 (Agendado)'+(reg&&reg.nome?' · '+reg.nome:''),'Entrega na data escolhida',0,true);
+    box.innerHTML = freteOpt('gratis','Frete Grátis 🎁 (Agendado)','Entrega na data escolhida',0,true);
     autoSelecionarFreteUnico(); return;
   }
-  // texto do prazo p/ "o quanto antes" — muda depois das 20h (passa a ser amanhã)
-  let prazo;
-  if(!lojaAberta()) prazo='Amanhã, no primeiro horário';
-  else if(FRETE_GRATIS_UF.includes(uf)) prazo='Entrega no mesmo dia · pedidos até 00h';
-  else if(reg && reg.expresso && reg.expresso.sameday) prazo=reg.expresso.prazo+' · pedidos até 00h';
-  else prazo=(reg && reg.expresso ? reg.expresso.prazo : '2 a 5 dias');
-
+  const prazo = '1 a 2 horas';
   const subtotal = subtotalProdutos();
-  // O QUANTO ANTES: grátis acima de R$70; abaixo, frete pago (com teto R$19,90)
   if(subtotal >= FRETE_GRATIS_ACIMA){
-    box.innerHTML = freteOpt('gratis','Frete Grátis 🎁'+(reg&&reg.nome?' · '+reg.nome:''), prazo, 0, true);
+    box.innerHTML = freteOpt('gratis','Frete Grátis 🎁', prazo, 0, true);
     autoSelecionarFreteUnico(); return;
   }
-  const valor = Math.min((reg && reg.expresso ? reg.expresso.valor : 19.90), FRETE_MAX);
-  let html = freteOpt('expresso','Motoboy'+(reg&&reg.nome?' · '+reg.nome:''), prazo, valor, false);
+  let html = freteOpt('expresso','Motoboy', prazo, 14.90, false);
   html += `<p class="frete-info" style="margin-top:8px;font-style:normal">🔒 Entrega <b>100% discreta</b> — embalagem sem identificação. Só você saberá o que tem no pacote.</p>`;
   box.innerHTML = html;
   autoSelecionarFreteUnico();
