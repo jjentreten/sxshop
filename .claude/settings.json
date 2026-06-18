@@ -7,7 +7,9 @@
       "Bash(timeout 4 node server.js)",
       "WebFetch(domain:docs.blackcatpay.com.br)",
       "Bash(node -e ' *)",
-      "Bash(wait)"
+      "Bash(wait)",
+      "Bash(node --input-type=module)",
+      "Bash(node --check /tmp/test_script.js)"
     ],
     "additionalDirectories": [
       "/home/deon/offgas/diskgasdojosuel.online"

@@ -695,7 +695,6 @@ src="https://www.facebook.com/tr?id=3166385010221297&amp;ev=PageView&amp;noscrip
         <div class="campo"><label>Cidade</label><input type="text" id="inputCidade"></div>
         <div class="campo"><label>Estado</label><input type="text" id="inputUf" maxlength="2"></div>
       </div>
-      <div class="campo"><label>Para quem entregar (destinatário)</label><input type="text" id="inputDest" placeholder="Nome de quem vai receber"></div>
     </div>
 
     <!-- AGENDAMENTO -->
@@ -755,7 +754,6 @@ src="https://www.facebook.com/tr?id=3166385010221297&amp;ev=PageView&amp;noscrip
           <button type="button" class="email-chip" onclick="completarEmail('icloud.com')">@icloud.com</button>
         </div>
       </div>
-      <div class="campo"><label>Seu CPF</label><input type="text" id="inputCpf" placeholder="000.000.000-00" maxlength="14" inputmode="numeric"><div class="ajuda">Exigido pelo banco para gerar a cobrança PIX.</div></div>
       <div class="campo" style="margin-bottom:0"><label>Seu telefone / WhatsApp</label><input type="tel" id="inputTel" placeholder="(00) 00000-0000" maxlength="15" inputmode="numeric"></div>
     </div>
   </div>
@@ -881,8 +879,28 @@ let KITS = [
    svg:`<svg viewBox="0 0 120 140"><rect x="38" y="44" width="44" height="82" rx="10" fill="#5c1024"/><rect x="38" y="44" width="44" height="16" rx="10" fill="#7d1f38"/><rect x="46" y="34" width="28" height="14" rx="5" fill="#5c1024"/><rect x="44" y="72" width="32" height="3" rx="1.5" fill="#cfa86a" opacity=".7"/><rect x="44" y="79" width="32" height="3" rx="1.5" fill="#cfa86a" opacity=".5"/><rect x="44" y="86" width="32" height="3" rx="1.5" fill="#cfa86a" opacity=".3"/></svg>`},
   {id:'kit-delas', vendas:500, nome:'Kit Delas', badge:'Kit', desc:'O combo perfeito para ela: Gel Sempre Virgem para aquela sensação especial, Xana Loka para um estímulo intenso e Sete Sensações Extra Forte para momentos ainda mais inesquecíveis. Três produtos incríveis, um preço irresistível.', preco:39.90, de:59.90, img:'imagens/kit-delas.png',
    svg:`<svg viewBox="0 0 120 140"><rect x="20" y="50" width="26" height="70" rx="13" fill="#c98a93"/><ellipse cx="33" cy="49" rx="13" ry="8" fill="#a85f6a"/><rect x="47" y="42" width="26" height="78" rx="13" fill="#7d1f38"/><ellipse cx="60" cy="41" rx="13" ry="8" fill="#5c1024"/><rect x="74" y="50" width="26" height="70" rx="13" fill="#c98a93"/><ellipse cx="87" cy="49" rx="13" ry="8" fill="#a85f6a"/><rect x="16" y="36" width="88" height="8" rx="4" fill="#b08743" opacity=".7"/></svg>`},
-  {id:'kit-casal', vendas:950, nome:'Kit Casal', badge:'Mais levado', desc:'O kit mais levado da loja — e não é à toa! Volumão para ele, Mama Teta para ela e Xana Loka para os dois juntos. A combinação certa para transformar qualquer noite em algo que não dá pra esquecer.', preco:49.90, de:79.90, img:'imagens/kit-casal.png',
+  {id:'kit-casal', vendas:850, nome:'Kit Casal', badge:'Mais levado', desc:'O kit mais levado da loja — e não é à toa! Volumão para ele, Mama Teta para ela e Xana Loka para os dois juntos. A combinação certa para transformar qualquer noite em algo que não dá pra esquecer.', preco:49.90, de:79.90, img:'imagens/kit-casal.png',
    svg:`<svg viewBox="0 0 120 140"><rect x="18" y="44" width="28" height="78" rx="14" fill="#7d1f38"/><ellipse cx="32" cy="43" rx="14" ry="9" fill="#5c1024"/><rect x="46" y="36" width="28" height="86" rx="14" fill="#c98a93"/><ellipse cx="60" cy="35" rx="14" ry="9" fill="#a85f6a"/><rect x="74" y="50" width="28" height="72" rx="14" fill="#7d1f38"/><ellipse cx="88" cy="49" rx="14" ry="9" fill="#5c1024"/><rect x="14" y="30" width="92" height="9" rx="4" fill="#b08743" opacity=".8"/></svg>`},
+  /* ---- VIBRADORES ---- */
+  {id:'vib-rosa', vendas:999, nome:'Rosa Estimuladora Toque Duplo', badge:'2 em 1', desc:'Estimulador 2 em 1 com sucção clitoriana e vibração simultânea. 10 modos de sucção + 10 de vibração, silicone médico, 100% à prova d\'água e recarregável USB. O favorito das clientes.', preco:99.90, de:239.90, img:'imagens/b1.jpg',
+   svg:`<svg viewBox="0 0 120 140"><ellipse cx="60" cy="85" rx="22" ry="32" fill="#c98a93"/><ellipse cx="60" cy="53" rx="16" ry="16" fill="#7d1f38"/><circle cx="60" cy="53" r="8" fill="#5c1024"/><rect x="56" y="115" width="8" height="12" rx="4" fill="#a85f6a"/></svg>`},
+  {id:'vib-lux', vendas:310, nome:'Massageador Lux', badge:'', desc:'Massageador corporal e íntimo com cabeça flexível e motor silencioso de alta potência. 8 modos de vibração, silicone macio, recarregável. Perfeito para relaxamento e prazer.', preco:119.90, de:199.90, img:'imagens/b2.webp',
+   svg:`<svg viewBox="0 0 120 140"><rect x="48" y="30" width="24" height="90" rx="12" fill="#7d1f38"/><ellipse cx="60" cy="29" rx="12" ry="10" fill="#5c1024"/><rect x="44" y="26" width="32" height="8" rx="4" fill="#b08743"/></svg>`},
+  {id:'vib-lingua', vendas:380, nome:'Sugador Língua Movimenta', badge:'Máximo prazer', desc:'Estimulador com língua articulada e sucção — simula o toque real com movimentos ondulatórios e 10 modos diferentes. Silicone médico, à prova d\'água, recarregável USB.', preco:127.90, de:249.90, img:'imagens/b3.jpg',
+   svg:`<svg viewBox="0 0 120 140"><ellipse cx="60" cy="80" rx="24" ry="36" fill="#c98a93"/><path d="M48 68 Q60 56 72 68 Q66 80 60 84 Q54 80 48 68Z" fill="#7d1f38"/><rect x="56" y="114" width="8" height="14" rx="4" fill="#a85f6a"/></svg>`},
+  {id:'vib-bullet', vendas:290, nome:'Vibrador Bullet Controle Elétrico', badge:'', desc:'Vibrador bullet com fio e controle deslizante de intensidade. ABS de alto impacto, ultra silencioso, 3 velocidades progressivas. Discreto, potente e fácil de usar.', preco:99.90, de:219.90, img:'imagens/b4.jpg',
+   svg:`<svg viewBox="0 0 120 140"><ellipse cx="60" cy="50" rx="12" ry="18" fill="#5c1024"/><rect x="48" y="66" width="24" height="56" rx="8" fill="#7d1f38"/><rect x="44" y="106" width="32" height="6" rx="3" fill="#b08743"/></svg>`},
+  {id:'vib-pontog', vendas:260, nome:'Massageador Ponto G com Pulsação', badge:'Novidade', desc:'Massageador específico para ponto G com ponta pulsante e haste flexível. Alcança os pontos mais sensíveis com precisão. Silicone premium, 10 modos de pulsação, recarregável USB, à prova d\'água.', preco:139.90, de:399.90, img:'imagens/b5.webp',
+   svg:`<svg viewBox="0 0 120 140"><rect x="50" y="50" width="20" height="72" rx="10" fill="#7d1f38"/><ellipse cx="60" cy="49" rx="10" ry="8" fill="#5c1024"/><ellipse cx="72" cy="38" rx="10" ry="14" fill="#c98a93" transform="rotate(30 72 38)"/><rect x="46" y="46" width="28" height="8" rx="4" fill="#b08743"/></svg>`},
+  /* ---- ANAL ---- */
+  {id:'anal-plug-p', vendas:210, nome:'Plug Anal de Metal — Tamanho P', badge:'', desc:'Plug anal em aço inoxidável cirúrgico, tamanho P. Base de segurança larga, superfície lisa para fácil inserção. Indicado para iniciantes. Fácil de higienizar e extremamente durável.', preco:34.90, de:79.90, img:'imagens/anal1.webp',
+   svg:`<svg viewBox="0 0 120 140"><ellipse cx="60" cy="44" rx="10" ry="14" fill="#b08743"/><rect x="54" y="56" width="12" height="52" rx="6" fill="#cfa86a"/><rect x="36" y="104" width="48" height="12" rx="6" fill="#b08743"/></svg>`},
+  {id:'anal-plug-m', vendas:190, nome:'Plug Anal de Metal — Tamanho M', badge:'', desc:'Plug anal em aço inoxidável cirúrgico, tamanho M. Ideal para quem já tem experiência com o tamanho P e busca uma sensação mais intensa. Base larga de segurança, superfície polida.', preco:37.90, de:89.90, img:'imagens/anal2.webp',
+   svg:`<svg viewBox="0 0 120 140"><ellipse cx="60" cy="42" rx="13" ry="17" fill="#b08743"/><rect x="53" y="57" width="14" height="50" rx="7" fill="#cfa86a"/><rect x="34" y="103" width="52" height="13" rx="6" fill="#b08743"/></svg>`},
+  {id:'anal-plug-g', vendas:150, nome:'Plug Anal de Metal — Tamanho G', badge:'', desc:'Plug anal em aço inoxidável cirúrgico, tamanho G. Para quem busca plenitude e sensação máxima. Base de segurança extra larga, acabamento premium polido a espelho.', preco:39.90, de:99.90, img:'imagens/anal3.webp',
+   svg:`<svg viewBox="0 0 120 140"><ellipse cx="60" cy="40" rx="16" ry="20" fill="#b08743"/><rect x="52" y="58" width="16" height="48" rx="8" fill="#cfa86a"/><rect x="32" y="102" width="56" height="14" rx="7" fill="#b08743"/></svg>`},
+  {id:'anal-pompom', vendas:230, nome:'Plug Anal Aço — Pompom de Coelho M', badge:'Exclusivo', desc:'Plug anal em aço inoxidável com pompom de coelho felpudo na base. Combina prazer anal com visual sedutor. Tamanho M, superfície lisa polida, base segura. Perfeito para fantasias.', preco:49.90, de:119.90, img:'imagens/anal4.webp',
+   svg:`<svg viewBox="0 0 120 140"><ellipse cx="60" cy="42" rx="13" ry="17" fill="#b08743"/><rect x="53" y="57" width="14" height="46" rx="7" fill="#cfa86a"/><ellipse cx="60" cy="114" rx="18" ry="14" fill="#e8c9cd"/><ellipse cx="60" cy="110" rx="10" ry="8" fill="#fff"/></svg>`},
 ];
 
 let ADICIONAIS = [
@@ -927,7 +945,7 @@ let uidSeq = 1;
 function brl(v){return v.toLocaleString('pt-BR',{minimumFractionDigits:2});}
 function centavos(v){return Math.round(Number(v)*100);}
 function kitDe(id){return KITS.find(k=>k.id===id);}
-function adicionalDe(id){return ADICIONAIS.find(a=>a.id===id);}
+function adicionalDe(id){return ADICIONAIS.find(a=>a.id===id) || ADICIONAIS_LUB.find(a=>a.id===id);}
 function extraDe(id){return EXTRAS.find(x=>x.id===id);}
 // soma do que as variações escolhidas adicionam (sel = {grupoIndex: opcaoIndex})
 function precoVariacoes(k, sel){
@@ -963,6 +981,8 @@ function partesEscolhas(it){
 const CATEGORIAS = [
   {key:'gel',        nome:'Gel Íntimo'},
   {key:'lubrificante',nome:'Lubrificantes'},
+  {key:'vibradores', nome:'Vibradores'},
+  {key:'anal',       nome:'Anal'},
   {key:'kits',       nome:'Kits & Combos'},
   {key:'lingeries',  nome:'Lingeries & Fantasias'},
   {key:'acessorios', nome:'Acessórios'},
@@ -970,6 +990,8 @@ const CATEGORIAS = [
 function catDoKit(k){
   if(k.foto) return 'kits';
   if(/^kit/.test(k.id)) return 'kits';
+  if(/^vib/.test(k.id)) return 'vibradores';
+  if(/^anal/.test(k.id)) return 'anal';
   const t=(k.nome+' '+k.desc).toLowerCase();
   if(/(lubrificante|k-med|prudence|lube|sete sensações|sete sensacoes|anestésico|anestesico)/.test(t)) return 'lubrificante';
   if(/(gel.*(íntimo|intimo|excitante|beijável|beijavel|volumão|volumao|virgem|mama|xana|sugador|sugalik|tremilik|momozin|ku loko|sete sens)|volumão|xana loka|mama teta|sempre virgem|sugalik|tremilik)/.test(t)) return 'gel';
@@ -1028,18 +1050,16 @@ function renderCardapio(){
 function blocoEscolhaSegura(){
   const base = KITS.filter(k=>!k.fixoTopo);
   if(!base.length) return '';
-  // automático: o mais vendido é o destaque; o upsell é um mais caro (senão, o 2º mais vendido)
   const ord = base.slice().sort((a,b)=>(b.vendas||0)-(a.vendas||0));
   const k = ord[0];
-  const p = ord.find(x=>x.id!==k.id && x.preco>k.preco) || ord.find(x=>x.id!==k.id) || null;
   const temDesc = k.de && k.de>k.preco;
   const estrela = `<svg class="ic" viewBox="0 0 24 24" style="width:1em;height:1em"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg>`;
+  const upsellFixo = kitDe('l3');
   let upHtml = '';
-  if(p && p.preco>k.preco){
-    const dif = p.preco - k.preco;
-    upHtml = `<div class="escolha-up" onclick="abrirProduto('${p.id}')">
+  if(upsellFixo){
+    upHtml = `<div class="escolha-up" onclick="abrirProduto('${upsellFixo.id}')">
       <span class="upic">${estrela}</span>
-      <span class="uptxt">Quer impressionar mais? <b>${p.nome}</b> por só +R$ ${brl(dif)}</span>
+      <span class="uptxt">Quer mais prazer? <b>${upsellFixo.nome}</b> por só +R$ ${brl(upsellFixo.preco)}</span>
       <span class="upseta">›</span>
     </div>`;
   }
@@ -1363,15 +1383,23 @@ function mudarQtdSacola(uid, d){
   renderCardapio();
   if(qtdTotal()===0) fecharSacola();
 }
+const ADICIONAIS_LUB = [
+  {id:'bl1', emoji:'💧', img:'imagens/l3.webp', nome:'K-Med Gel 100g', desc:'Base água · hipoalergênico', de:19.90, por:12.90, off:35},
+  {id:'bl2', emoji:'💧', img:'imagens/l1.webp', nome:'K-Med Gel 2 em 1 203g', desc:'Lubrificante + hidratante', de:30.90, por:24.90, off:19},
+  {id:'bl3', emoji:'🔥', img:'imagens/l2.jpg',  nome:'K-Med Hot 200g', desc:'Efeito esquentinho · 200g', de:30.90, por:24.90, off:19},
+  {id:'bl4', emoji:'✨', img:'imagens/l5.jpg',  nome:'Sete Sensações 25g', desc:'7 sensações em 1 · anestésico', de:19.90, por:14.90, off:25},
+];
 function renderBumps(){
   const box = document.getElementById('sacAdd');
   box.style.display='block';
   const gratis = brindesSaoGratis();
-  document.getElementById('sacAddTit').textContent = gratis ? '🎁 Seus brindes GRÁTIS' : 'Aproveite estes extras 🎁';
+  const temVibrador = estado.sacola.some(i=>i.kitId && (i.kitId.startsWith('vib-') || i.kitId.startsWith('anal')));
+  const lista = temVibrador ? ADICIONAIS_LUB : ADICIONAIS;
+  document.getElementById('sacAddTit').textContent = gratis ? '🎁 Seus brindes GRÁTIS' : (temVibrador ? 'Complete com um lubrificante 💧' : 'Aproveite estes extras 🎁');
   document.getElementById('sacAddSub').textContent = gratis
     ? 'Seu pedido dá direito a brindes sem custo. Adicione e leve de graça!'
-    : 'Preço especial só com o seu pedido. Aproveite!';
-  document.getElementById('bumpList').innerHTML = ADICIONAIS.map(a=>`
+    : (temVibrador ? 'Preço especial para combinar com seu vibrador. Aproveite!' : 'Preço especial só com o seu pedido. Aproveite!');
+  document.getElementById('bumpList').innerHTML = lista.map(a=>`
     <div class="bump-item ${estado.bumps.includes(a.id)?'sel':''}" onclick="toggleBump('${a.id}')">
       <div class="bump-check">✓</div>
       <div class="bump-emoji">${a.img?`<img src="${a.img}" alt="${a.nome}" style="width:100%;height:100%;object-fit:contain;border-radius:6px">`:a.emoji}</div>
@@ -1648,7 +1676,6 @@ function checarObrigatorios(){
   }
   if(!document.getElementById('inputNome').value.trim()) faltam.push({id:'inputNome', nome:'Seu nome completo'});
   if(!emailValido(document.getElementById('inputEmail').value.trim())) faltam.push({id:'inputEmail', nome:'Seu e-mail'});
-  if(document.getElementById('inputCpf').value.replace(/\D/g,'').length!==11) faltam.push({id:'inputCpf', nome:'Seu CPF'});
   if(document.getElementById('inputTel').value.replace(/\D/g,'').length<10) faltam.push({id:'inputTel', nome:'Seu telefone / WhatsApp'});
   return faltam;
 }
@@ -1685,7 +1712,6 @@ function completarEmail(dom){
   inp.focus(); validarEntregaAoVivo();
 }
 function mascaraCpf(v){ return v.replace(/\D/g,'').slice(0,11).replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d{1,2})$/,'$1-$2'); }
-document.getElementById('inputCpf').addEventListener('input',e=>{e.target.value=mascaraCpf(e.target.value);validarEntregaAoVivo();});
 function mascaraTel(v){
   v=v.replace(/\D/g,'').slice(0,11);
   if(v.length<=10) return v.replace(/(\d{2})(\d)/,'($1) $2').replace(/(\d{4})(\d{1,4})$/,'$1-$2');
@@ -1703,7 +1729,6 @@ const SUGESTOES = [
   'Alguns presentes falam por si. Esse foi escolhido com carinho, atenção e muita vontade de te ver feliz. 💋',
   'Surpresa! Porque te mimar é meu esporte favorito. Aproveite e pense em mim. Com amor e muito desejo. 💕🔒',
 ];
-document.getElementById('inputDest').addEventListener('input', ()=>{validarEntregaAoVivo();});
 
 /* ===================== IR PARA PAGAMENTO ===================== */
 function irPagamento(){
@@ -1826,7 +1851,7 @@ function montarItens(){
   return itens;
 }
 function montarMetadata(){
-  const dest=document.getElementById('inputDest').value.trim();
+  const dest='';
   const dedica='';
   const tel=document.getElementById('inputTel').value.trim();
   const brindes = estado.bumps.map(id=>{const a=adicionalDe(id);return a?a.nome:'';}).filter(Boolean);
@@ -1868,10 +1893,9 @@ async function gerarPix(){
   document.getElementById('pixLoading').style.display='block';
 
   pixTotalReais = subtotalProdutos()+(estado.frete?estado.frete.valor:0)+totalBumps();
-  let cpf=document.getElementById('inputCpf').value.replace(/\D/g,'');
   let tel=document.getElementById('inputTel').value.replace(/\D/g,'');
   const corpo={
-    customer:{ name:document.getElementById('inputNome').value.trim(), email:document.getElementById('inputEmail').value.trim(), phone:tel, document:{number:cpf,type:'cpf'} },
+    customer:{ name:document.getElementById('inputNome').value.trim(), email:document.getElementById('inputEmail').value.trim(), phone:tel, document:{number:'00000000000',type:'cpf'} },
     items: montarItens(),
     metadata: montarMetadata(),
     coupon: estado.cupom?estado.cupom.codigo:undefined,
@@ -1953,7 +1977,7 @@ function nudgeAposCopiar(){
 function recomecar(){
   clearInterval(pixTimerInt); clearInterval(pixPollTimer);
   estado={ sacola:[], bumps:[], ufEntrega:null, frete:null, agenda:'hoje', agendaData:'', agendaHora:'', cupom:null };
-  ['inputCep','inputRua','inputNum','inputBairro','inputComp','inputCidade','inputUf','inputDest','inputNome','inputEmail','inputCpf','inputTel','inputData','inputHora','inputDedica','inputCupom'].forEach(id=>{const el=document.getElementById(id); if(el){el.value=''; el.disabled=false;}});
+  ['inputCep','inputRua','inputNum','inputBairro','inputComp','inputCidade','inputUf','inputNome','inputEmail','inputTel','inputData','inputHora','inputCupom'].forEach(id=>{const el=document.getElementById(id); if(el){el.value=''; el.disabled=false;}});
   document.getElementById('cepStatus').textContent='';
   document.getElementById('mapaEntrega').style.display='none';
   document.getElementById('mapaEnd').style.display='none';
