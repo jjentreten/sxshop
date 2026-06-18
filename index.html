@@ -1925,9 +1925,23 @@ async function gerarPix(){
 }
 function renderQr(codigo, imagemUrl){
   const box=document.getElementById('pixQr'); box.innerHTML='';
-  if(imagemUrl){ const img=new Image(); img.src=imagemUrl; img.alt='QR Code PIX'; img.style.cssText='width:200px;height:200px;object-fit:contain;display:block;margin:0 auto'; box.appendChild(img); return; }
-  if(window.QRCode){ new QRCode(box,{text:codigo,width:200,height:200,correctLevel:QRCode.CorrectLevel.M}); }
-  else box.innerHTML='<p style="font-size:.8rem;color:#9a7680">Use o código "copia e cola" abaixo 👇</p>';
+  // tenta base64 da gateway primeiro
+  if(imagemUrl){
+    const src = imagemUrl.startsWith('data:') ? imagemUrl : 'data:image/png;base64,'+imagemUrl;
+    const img=new Image(); img.alt='QR Code PIX';
+    img.style.cssText='width:200px;height:200px;object-fit:contain;display:block;margin:0 auto';
+    img.onerror=()=>{ box.innerHTML=''; gerarQrLocal(box,codigo); };
+    img.src=src; box.appendChild(img); return;
+  }
+  gerarQrLocal(box, codigo);
+}
+function gerarQrLocal(box, codigo){
+  function tentar(n){
+    if(window.QRCode){ new QRCode(box,{text:codigo,width:200,height:200,correctLevel:QRCode.CorrectLevel.M}); return; }
+    if(n>0) setTimeout(()=>tentar(n-1), 300);
+    else box.innerHTML='<p style="font-size:.8rem;color:#9a7680">Use o código "copia e cola" abaixo 👇</p>';
+  }
+  tentar(10);
 }
 function iniciarPolling(id){
   if(!id) return;
