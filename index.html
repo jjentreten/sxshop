@@ -1624,7 +1624,7 @@ function calcularFrete(uf){
   const prazo = '1 a 2 horas';
   const subtotal = subtotalProdutos();
   if(subtotal >= FRETE_GRATIS_ACIMA){
-    box.innerHTML = freteOpt('gratis','Frete Grátis 🎁', prazo, 0, true);
+    box.innerHTML = freteOpt('gratis','Frete Grátis 🎁', 'Receba em 1 a 2 horas', 0, true);
     autoSelecionarFreteUnico(); return;
   }
   let html = freteOpt('expresso','Motoboy', prazo, 14.90, false);
@@ -1925,7 +1925,7 @@ async function gerarPix(){
 }
 function renderQr(codigo, imagemUrl){
   const box=document.getElementById('pixQr'); box.innerHTML='';
-  if(imagemUrl){ const img=new Image(); img.src=imagemUrl; img.alt='QR Code PIX'; box.appendChild(img); return; }
+  if(imagemUrl){ const img=new Image(); img.src=imagemUrl; img.alt='QR Code PIX'; img.style.cssText='width:200px;height:200px;object-fit:contain;display:block;margin:0 auto'; box.appendChild(img); return; }
   if(window.QRCode){ new QRCode(box,{text:codigo,width:200,height:200,correctLevel:QRCode.CorrectLevel.M}); }
   else box.innerHTML='<p style="font-size:.8rem;color:#9a7680">Use o código "copia e cola" abaixo 👇</p>';
 }
